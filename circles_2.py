@@ -52,12 +52,14 @@ class Window(QMainWindow, UiMainWindow):
         self.x, self.y, self.razmer = random.randrange(10, self.width() - 50), \
                                       random.randrange(10, self.height() - 50), \
                                       random.randrange(10, 50)
+        self.col1, self.col2, self.col3 = random.randrange(0, 255), random.randrange(0, 255), \
+                                          random.randrange(0, 255)
 
     def paintEvent(self, event):
         if self.do_paint:
             painter = QPainter()
             painter.begin(self)
-            painter.setBrush(QColor('#ffff00'))
+            painter.setBrush(QColor(self.col1, self.col2, self.col3))
             painter.drawEllipse(self.x, self.y, self.razmer, self.razmer)
             painter.end()
         self.update()
